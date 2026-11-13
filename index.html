@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vish · Laminários</title>
+<meta name="description" content="Visualizadores web de lâminas de histologia e patologia: mama e cavidade oral.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,650&family=JetBrains+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: capa com duas "lâminas" de vidro lado a lado, cada uma leva a um laminário */
+:root{
+  --bg:#efeef4; --panel:#fafafc; --ink:#1c1928; --muted:#5f5a73; --line:#dcd9e6;
+  --hema:#3f3794; --hema-soft:#e7e4f7; --eosin:#b23f6c; --eosin-soft:#f7e4ec; --glass:#ffffff;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;
+  --body:"Public Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#121019; --panel:#19171f; --ink:#ebe8f3; --muted:#a39eb6; --line:#2c2838;
+  --hema:#a69ef3; --hema-soft:#27233f; --eosin:#ee82ad; --eosin-soft:#3a1f2c; --glass:#1f1c28; color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--body);
+  padding-block:max(48px,env(safe-area-inset-top,0px)) max(48px,env(safe-area-inset-bottom,0px));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:36px}
+.eb{margin:0;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--eosin);font-weight:600}
+h1{font-family:var(--display);font-weight:650;font-size:clamp(40px,7vw,68px);line-height:1;letter-spacing:-.03em;margin:10px 0 14px}
+.lead{margin:0;color:var(--muted);font-size:18px;max-width:58ch}
+.slides{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px}
+a.slide{display:grid;grid-template-columns:132px minmax(0,1fr);text-decoration:none;color:inherit;background:var(--glass);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .15s,box-shadow .15s,border-color .15s}
+a.slide:hover{transform:translateY(-2px);border-color:var(--hema);box-shadow:0 14px 34px rgba(40,30,80,.14)}
+a.slide:focus-visible{outline:3px solid var(--hema);outline-offset:3px}
+.label{background:var(--c-soft);border-right:1px dashed var(--line);display:flex;flex-direction:column;justify-content:space-between;padding:14px 12px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.label b{font-family:var(--display);font-size:20px;line-height:1.1;color:var(--c);font-weight:650}
+.label svg{width:100%;height:auto;max-height:90px}
+.body{padding:20px 22px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.body h2{font-family:var(--display);font-weight:650;font-size:26px;letter-spacing:-.02em;margin:0}
+.body p{margin:0;color:var(--muted);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tags span{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--muted)}
+.go{margin-top:auto;padding-top:8px;font-weight:600;color:var(--c);font-size:15px}
+.mama{--c:var(--eosin);--c-soft:var(--eosin-soft)}
+.bucal{--c:var(--hema);--c-soft:var(--hema-soft)}
+.note{font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin:0;max-width:75ch}
+@media (max-width:480px){a.slide{grid-template-columns:96px minmax(0,1fr)}.label b{font-size:16px}}
+@media (prefers-reduced-motion:reduce){a.slide{transition:none}a.slide:hover{transform:none}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eb">Vish · lâminas digitais</p>
+    <h1>Laminários</h1>
+    <p class="lead">Visualizadores web de lâminas de histologia e patologia, com zoom de 2× a 40×, roteiros guiados, casos clínicos e quiz. Abrem no computador e no celular, sem instalar nada.</p>
+  </header>
+
+  <section class="slides" aria-label="Laminários disponíveis">
+    <a class="slide mama" href="mama/">
+      <div class="label"><b>Mama</b>
+        <svg viewBox="0 0 100 80" aria-hidden="true"><ellipse cx="50" cy="40" rx="44" ry="32" fill="var(--c)" opacity=".18"/><circle cx="38" cy="36" r="13" fill="none" stroke="var(--c)" stroke-width="3"/><circle cx="64" cy="46" r="9" fill="none" stroke="var(--c)" stroke-width="3"/><circle cx="38" cy="36" r="4" fill="var(--c)"/></svg>
+        <span>MA · 16 lâminas</span></div>
+      <div class="body">
+        <h2>Laminário de Mama</h2>
+        <p>Mama normal, lesões benignas, carcinoma in situ e invasivos, imuno-histoquímica e FISH HER2.</p>
+        <div class="tags"><span>H&amp;E</span><span>RE · Ki-67</span><span>HER2</span><span>FISH</span></div>
+        <span class="go">Abrir laminário →</span>
+      </div>
+    </a>
+    <a class="slide bucal" href="bucal/">
+      <div class="label"><b>Bucal</b>
+        <svg viewBox="0 0 100 80" aria-hidden="true"><ellipse cx="50" cy="40" rx="44" ry="32" fill="var(--c)" opacity=".18"/><path d="M14 30 Q50 10 86 30" fill="none" stroke="var(--c)" stroke-width="3"/><path d="M18 40 Q50 24 82 40" fill="none" stroke="var(--c)" stroke-width="2" stroke-dasharray="3 4"/><circle cx="56" cy="54" r="7" fill="var(--c)"/></svg>
+        <span>Odontologia</span></div>
+      <div class="body">
+        <h2>Laminário Bucal</h2>
+        <p>Histologia e patologia bucal para a odontologia, com roteiros, casos e anotações.</p>
+        <div class="tags"><span>H&amp;E</span><span>Roteiros</span><span>Casos</span></div>
+        <span class="go">Abrir laminário →</span>
+      </div>
+    </a>
+  </section>
+
+  <p class="note">Protótipo de demonstração. As lâminas são geradas por computador para mostrar as funções; na versão final entram as lâminas digitalizadas da disciplina. As anotações feitas aqui ficam salvas apenas no navegador de quem as fez.</p>
+</main>
+</body>
+</html>
